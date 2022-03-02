@@ -1,20 +1,19 @@
+from random import choices
 from django.forms import ModelForm
 from django import forms
 
 from .models import Product
+from category.models import Category
+from supplier.models import Supplier
 
 
 class ProductForm(ModelForm):
-    
+    product_name=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'})
+    category=forms.ModelChoiceField(queryset=Category.objects.all())
     class Meta:
+       
         model=Product
-        fields =('product_name','product_descritption','available_quantity','threshold_quantity','product_status','category','supplier')
+        fields =('product_name','category')
         
-        widgets = {
-            'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'}),
-            'category_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Category Descriptiom'}),
-            'is_active' : forms.CheckboxInput(),
-
-            
-        }
+       
     

@@ -1,0 +1,11 @@
+{%extends 'base.html' %} {%block content%}
+
+<h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em">
+   Add New Product
+</h1>
+<form action="" method="POST">
+   {%csrf_token%} {{form.as_p}}
+   <button class="btn btn-primary" type="submit">Submit</button>
+   <a href="{% url 'product' %}" class="btn btn-primary">Cancel</a>
+</form>
+{%endblock%}
