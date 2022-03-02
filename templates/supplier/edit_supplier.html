@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {%block content%}
+
+<div class="container">
+   <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em">
+      Edit Supplier
+   </h1>
+   <form action="" method="POST">
+      {%csrf_token%} {{form.as_p}}
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+      <a href="{% url 'supplier' %}" class="btn btn-primary">Cancel</a>
+   </form>
+</div>
+{% endblock %}

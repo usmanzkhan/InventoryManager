@@ -1,0 +1,42 @@
+{%extends 'base.html' %} {%load static%} {%block content%}
+<div class="container mb-5">
+   <table class="table table-striped">
+      <thead>
+         <tr>
+            <th scope="col">Supplier Name</th>
+            <th scope="col">Supplier Address</th>
+            <th scope="col">Supplier Email</th>
+            <th scope="col">Is Active</th>
+            <th scope="col">Actions</th>
+         </tr>
+      </thead>
+
+      <tbody>
+         {%for supplier in suppliers%}
+         <tr>
+            <th scope="row">{{supplier.supplier_name}}</th>
+            <td>{{supplier.supplier_address}}</td>
+            <td>{{supplier.supplier_email}}</td>
+            <td>{{supplier.is_active}}</td>
+            <td>
+               <a
+                  style="margin-right: 30px"
+                  href="{% url 'edit_supplier' supplier.id %}"
+                  >Edit</a
+               >
+               <a href="{% url 'delete_supplier' supplier.id %}">Remove</a>
+            </td>
+         </tr>
+         {% endfor %}
+      </tbody>
+   </table>
+</div>
+<div class="text-center">
+   <a href="{% url 'create_supplier' %}"
+      ><button type="button" class="btn btn-primary">
+         Add New Supplier
+      </button></a
+   >
+</div>
+
+{%endblock%}
